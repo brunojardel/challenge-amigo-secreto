@@ -1,24 +1,25 @@
 //O principal objetivo deste desafio é fortalecer suas habilidades em lógica de programação. Aqui você deverá desenvolver a lógica para resolver o problema.
 
-let amigos = []; //Criação do array que receberá a relação de amigos
+let amigos = []; //Criação e inicialização com 0 elementos do array (vetor) que receberá a relação de amigos
 
-function adicionarAmigo() {
-    let inputAmigo = document.getElementById('amigo');
-    let nomeAmigo = inputAmigo.value;
+//Função para adicionar um novo amigo ao vetor
+function adicionarAmigo() { 
+    let inputAmigo = document.getElementById('amigo'); //Cria uma variável para apontar para a caixa de textos
+    let nomeAmigo = inputAmigo.value; //Lê o conteúdo do campo de texto
 
-    if (nomeAmigo == "") {
-        alert("Digite o nome do amigo");
+    if (nomeAmigo == "") { //Se o campo tiver sido deixado em branco, emite alerta e retorna sem adicionar um novo amigo
+        alert("Digite o nome do amigo"); 
         return;
     }
-    amigos.push(nomeAmigo);
-    console.log(amigos);
-    inputAmigo.value = "";
-    inputAmigo.focus();
-    atualizarLista();
+    amigos.push(nomeAmigo); // Adiciona o novo amigo ao array amigos
+    console.log(amigos); // Auxilia no console exibindo o vetor atualizado
+    inputAmigo.value = ""; //Limpa a caixa de textos
+    inputAmigo.focus(); //Retorna o foco para a caixa de textos
+    atualizarLista(); //Chama função para atualizar lista
 }
 
-
-function atualizarLista() {
+//Função para Atualiza a lista de amigos
+function atualizarLista() { 
     let listaAmigos = document.getElementById("listaAmigos");
     listaAmigos.innerHTML = "";
 
@@ -29,18 +30,25 @@ function atualizarLista() {
     }
 }
 
-function sortearAmigo() {
-    if (amigos.length === 0) {
+//Função para sortear um novo amigo
+function sortearAmigo() { 
+    if (amigos.length === 0) {                                        //Verifica de o vetor não está vazio para exibir erro
         alert("Nenhum amigo adicionado");
         return;
     }
 
-    let sorteado = amigos[Math.floor(Math.random() * amigos.length)];
+    let sorteado = amigos[Math.floor(Math.random() * amigos.length)]; //Sorteia um número aleatório entre 0 e o comprimento do vetor
     let resultado = document.getElementById("resultado");
     resultado.innerHTML = `O amigo sorteado foi: ${sorteado}`
 
-    //Código para limpar lista
+    //limparLista() //Opção de limpar lista após sorteio - Desabilitada
+}
+
+//Função para Limpar Lista
+function limparLista() {
     let limparLista = document.getElementById("listaAmigos");
     limparLista.innerHTML = "";
+    resultado.innerHTML = "";
     amigos = [];
 }
+    
